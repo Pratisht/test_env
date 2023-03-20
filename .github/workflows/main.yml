@@ -14,7 +14,7 @@ on:
 jobs:
   
   Build:    
-    if: ${{ inputs.env_type }} == 'dev'
+    if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
     name: 'Build-Test'
     steps:
