@@ -23,12 +23,7 @@ jobs:
       # Checkout Repo Code
       - name: Checkout Repo Code
         uses: actions/checkout@v2
-        
-      # Install Az PowerShell module  
-      - name: Install Az PowerShell module
-        run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force 
-        shell: pwsh
-        
+  
     
       - name: test_run
         run: |
