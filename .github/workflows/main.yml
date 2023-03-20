@@ -10,15 +10,11 @@ on:
       env_type:
         description: 'Environment Name'
         required: true
-        default: 'prod'
-        
-permissions:
-      id-token: write
-      contents: read
+        default: prod
 jobs:
   
   Build:    
-    if: ${{ inputs.env_type }} == 'prod'
+    if: ${{ inputs.env_type }} == 'dev'
     runs-on: ubuntu-latest
     name: 'Build-Test'
     steps:
