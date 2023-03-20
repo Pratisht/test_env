@@ -1,0 +1,42 @@
+name: Azure ML CI CD Workflow
+
+# Manual trigger with parameters
+on:
+  #Schedule Workflow every hour
+#   schedule:
+#     - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      resourceGroupName:
+        description: 'Environment Name'
+        required: true
+        default: 'Prod'
+        
+permissions:
+      id-token: write
+      contents: read
+jobs:
+  Build:     
+    runs-on: ubuntu-latest
+    name: 'Build-Test'
+    steps:
+      # Checkout Repo Code
+      - name: Checkout Repo Code
+        uses: actions/checkout@v2
+        
+      # Install Az PowerShell module  
+      - name: Install Az PowerShell module
+        run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force 
+        shell: pwsh
+        
+    
+      - name: test_run
+        run: |
+              python ./main.py
+         
+         
+
+      
+      
+    
+      
