@@ -10,13 +10,15 @@ on:
       env_type:
         description: 'Environment Name'
         required: true
-        default: 'Prod'
+        default: 'prod'
         
 permissions:
       id-token: write
       contents: read
 jobs:
-  Build:     
+  
+  Build:    
+    if: ${{ inputs.env_type }} == 'prod'
     runs-on: ubuntu-latest
     name: 'Build-Test'
     steps:
@@ -27,7 +29,6 @@ jobs:
     
       - name: test_run
         run: |
-              if [[ "$${{ inputs.env_type }}" == "prod" ]]; then
               python ./main.py
          
          
