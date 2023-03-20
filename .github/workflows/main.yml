@@ -7,7 +7,7 @@ on:
 #     - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
-      resourceGroupName:
+      env_type:
         description: 'Environment Name'
         required: true
         default: 'Prod'
@@ -27,6 +27,7 @@ jobs:
     
       - name: test_run
         run: |
+              if [[ "${{ env_type }}" == "prod" ]]; then
               python ./main.py
          
          
