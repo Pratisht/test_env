@@ -27,7 +27,7 @@ jobs:
     
       - name: test_run
         run: |
-              if [[ "${{ env_type }}" == "prod" ]]; then
+              if [[ "$${{ inputs.env_type }}" == "prod" ]]; then
               python ./main.py
          
          
