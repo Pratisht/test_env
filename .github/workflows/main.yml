@@ -2,7 +2,7 @@ name: Project Tests
 on:
   pull_request:
     branches:
-      - dev_branch
+      - main
 
 
 jobs:
