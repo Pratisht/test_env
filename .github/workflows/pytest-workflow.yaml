@@ -1,0 +1,32 @@
+
+name: Build-Test
+
+on:
+  pull_request:
+    branches:
+      - '*'
+      - '!main'
+
+
+jobs:
+  Build-Test:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v2
+      
+      - name: Push to prod
+        run: |
+          git checkout prod
+          git pull origin dev --no-commit --no-ff --except .github/workflows/pytest-workflow.yaml
+          git commit -m "Merge from dev"
+          git push origin prod
+
+        
+      - uses: actions/checkout@v2
+      
+      - name: Install Pytest
+        run: pip install pytest
+
+      - name: Test with pytest
+        run: python -m pytest -vv
