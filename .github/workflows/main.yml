@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
       - dev_branch
-    types: [closed]
+
 
 jobs:
   build:
