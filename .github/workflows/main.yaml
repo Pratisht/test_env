@@ -1,0 +1,17 @@
+name: Push to prod
+on:
+  workflow_dispatch:
+    inputs:
+      test_env_name:
+        description: 'Azure ML Environment Name'
+        required: true
+        default: 'test_prod'
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Push to prod
+      run: |
+        echo "Hello, World"
