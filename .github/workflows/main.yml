@@ -3,7 +3,7 @@ name: Azure ML CI CD Workflow
 # Manual trigger with parameters
 on:
   pull_request:
-    branches: [ dev_branch ]
+    branches: [ main ]
 
 
 jobs:
