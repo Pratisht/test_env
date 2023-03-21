@@ -1,10 +1,10 @@
 name: Azure ML CI CD Workflow
 
 # Manual trigger with parameters
-on: [pull_request]
-  #Schedule Workflow every hour
-#   schedule:
-#     - cron: "0 * * * *"
+on:
+  pull_request:
+    branches: [ dev_branch ]
+
 
 jobs:
   
