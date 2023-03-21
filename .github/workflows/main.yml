@@ -21,7 +21,11 @@ jobs:
       # Checkout Repo Code
       - name: Checkout Repo Code
         uses: actions/checkout@v2
-  
+        
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest ./test/sample_test.py
     
       - name: test_run
         run: |
