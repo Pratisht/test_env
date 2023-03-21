@@ -1,16 +1,11 @@
 name: Azure ML CI CD Workflow
 
 # Manual trigger with parameters
-on:
+on: [push]
   #Schedule Workflow every hour
 #   schedule:
 #     - cron: "0 * * * *"
-  workflow_dispatch:
-    inputs:
-      env_type:
-        description: 'Environment Name'
-        required: true
-        default: prod
+
 jobs:
   
   Build:    
@@ -27,10 +22,7 @@ jobs:
           pip install pytest
           pytest ./test/sample_test.py
     
-      - name: test_run
-        run: |
-              python ./main.py
-         
+
          
 
       
