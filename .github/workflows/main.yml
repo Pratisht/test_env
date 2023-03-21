@@ -1,30 +1,24 @@
-name: Azure ML CI CD Workflow
-
-# Manual trigger with parameters
+name: Project Tests
 on:
-  pull_request
-
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  
-  Build:    
-    if: ${{ github.event.inputs.env_type == 'prod' }}
+  build:
     runs-on: ubuntu-latest
-    name: 'Build-Test'
     steps:
-      # Checkout Repo Code
-      - name: Checkout Repo Code
-        uses: actions/checkout@v2
-        
-      - name: Test with pytest
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+      - name: Install dependencies
         run: |
-          pip install pytest
-          pytest ./test/sample_test.py
-    
-
-         
-
-      
-      
-    
-      
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test with pytest
+        run: pytest -vv
