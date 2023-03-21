@@ -1,8 +1,16 @@
-def test_sum():
-    assert sum([1, 2, 3]) == 6, "Should be 6"
-    
-    
+import pytest
 
-if __name__ == "__main__":
-    test_sum()
-    print("Everything passed")
+from mathematics import add_numbers
+
+def test_add_positive():
+    assert add_numbers(1, 2) == 3
+
+def test_add_zero():
+    assert add_numbers(1, 0) == 1
+
+def test_add_negative():
+    assert add_numbers(4, -100) == -96
+
+def test_add_string__expect_exception():
+    with pytest.raises(TypeError):
+        add_numbers(4, 'I DO NOT BELONG HERE')
